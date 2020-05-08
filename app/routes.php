@@ -2,13 +2,25 @@
 
 $app->get('/', App\Controllers\HomeController::class .':accueil');
 
-//$app->post('/', App\Controllers\HomeController::class .':accueil');
+$app->post('/', App\Controllers\HomeController::class .':accueil');
 
 $app->group('/auth', function () {
 
     $this->post('/login', App\Controllers\AuthController::class .':login');
 
     $this->post('/logout', App\Controllers\AuthController::class .':logout');
+
+});
+
+$app->group('/admin', function () {
+    $this->post('/patients', App\Controllers\AdminController::class .':getPatients');
+    $this->post('/inscription', App\Controllers\AdminController::class .':inscription');
+    $this->post('/enregitrement', App\Controllers\AdminController::class .':enregitrement');
+    $this->post('/patientssymptomes', App\Controllers\AdminController::class .':getPatientsSymptomes');
+    $this->post('/home', App\Controllers\AdminController::class .':home');
+    // $this->post('/login', App\Controllers\AuthController::class .':login');
+    //
+    // $this->post('/logout', App\Controllers\AuthController::class .':logout');
 
 });
 
@@ -64,4 +76,3 @@ $app->group('/file', function () {
     $this->get('/showfile/{file}', App\Controllers\UploadController::class .':showfile');
 
 });
-

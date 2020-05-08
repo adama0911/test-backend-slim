@@ -19,5 +19,5 @@ class HomeController extends Controller {
         // $params = json_decode($data['id']);
         // return $response->withJson(array("id", $params));
     }
-    
+
 }
